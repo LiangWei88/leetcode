@@ -30,69 +30,25 @@
 
 // @lc code=start
 
-var reduceItem = function (arr) {
-    return arr.reduce((acc, current, index) => {
-
-        if (arr.length > 0) {
-            if (current * acc[acc.length - 1] > 0) {
-                acc[acc.length - 1] += current;
-            } else {
-                acc.push(current)
-            }
-        } else if (current > 0) {
-            acc.push(current);
-        }
-
-        return acc
-    }, [])
-}
 /**
  * @param {number[]} nums
  * @return {number}
  */
 var maxSubArray = function (nums) {
-    if (nums.every(el => el === 0)) {
-        return 0
-    }
-    if (nums.every(el => el < 0)) {
-        nums.sort((a, b) => b - a)
-        return nums[0]
-    }
-    if (nums.every(el => el > 0)) {
-        return nums.reduce((sum, current) => sum += current)
-    }
-
-    const newArr = reduceItem(nums);
-
-    let maxSum = newArr[0];
-    for (let begin = 0; begin < newArr.length; begin++) {
-        if (newArr[begin] < 0) {
-            continue
+    let max = nums[0];
+    let sum = 0
+    nums.forEach(element => {
+        if (sum <= 0) {
+            sum = element
+        } else {
+            sum += element
         }
-
-        let currentSum = newArr[begin];
-        if (currentSum > maxSum) {
-            maxSum = currentSum
-        }
-
-        const lastIndex = newArr.length - 1
-        if (lastIndex > begin) {
-            for (let end = begin + 1; end < newArr.length; end++) {
-
-                currentSum += newArr[end]
-                if (currentSum > maxSum) {
-                    maxSum = currentSum
-                }
-
-            }
-        }
-
-    }
-    return maxSum
+        max = Math.max(sum, max)
+    });
+    return max
 };
 module.exports = {
-    maxSubArray,
-    reduceItem
+    maxSubArray
 }
 // @lc code=end
 
