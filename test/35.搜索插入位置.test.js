@@ -11,5 +11,6 @@ describe('35.搜索插入位置', () => {
     assert.equal(modInstance([1, 3, 5, 6], 7), 4, 'modInstance([1,3,5,6], 7)')
     assert.equal(modInstance([1, 3, 5, 6], 0), 0, 'modInstance([1,3,5,6], 0)')
     assert.equal(modInstance([], 999), 0, 'modInstance([],999)')
+    assert.equal(modInstance([1, 2, 3], 999), 3, 'modInstance([],999)')
   })
 })
