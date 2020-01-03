@@ -50,20 +50,33 @@
  * @return {number}
  */
 var searchInsert = function (nums, target) {
-    if (nums.indexOf(target) > -1) {
-        return nums.indexOf(target)
-    }
+    const endIndex = nums.length - 1
 
     if (nums.length === 0 || target < nums[0]) {
         return 0
     }
 
-    if (target > nums[nums.length - 1]) {
+    if (target > nums[endIndex]) {
         return nums.length
     }
 
+    if (nums.indexOf(target) > -1) {
+        return nums.indexOf(target)
+    }
 
-    return nums.findIndex(element => element >= target)
+    let begin = 0;
+    let end = endIndex;
+    let middle = Math.floor((begin + end) / 2);
+
+    while (end - begin > 1) {
+        if (nums[middle] > target) {
+            end = middle
+        } else {
+            begin = middle
+        }
+        middle = Math.floor((begin + end) / 2);
+    }
+    return end
 };
 module.exports = searchInsert
 // @lc code=end
