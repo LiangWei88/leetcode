@@ -75,15 +75,12 @@ function getNewArr(nums, val) {
     return newArr
 }
 var removeElement = function (nums, val) {
-    var currentIndex = 0;
-    for (let index = 0; index < nums.length; index++) {
-        const element = nums[index];
-        if (nums[index] !== val) {
-            nums[currentIndex] = nums[index];
-            currentIndex++;
-        }
+    let valIndex = nums.indexOf(val);
+    while (valIndex > -1) {
+        nums.splice(valIndex, 1);
+        valIndex = nums.indexOf(val);
     }
-    return currentIndex;
+    return nums.length;
 };
 
 module.exports = {
