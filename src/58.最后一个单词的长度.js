@@ -33,13 +33,15 @@
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-    const arr = s.split(' ')
-    let lastWord = arr.pop();
-    while (lastWord.length <= 0 && arr.length > 0) {
-        lastWord = arr.pop();
+    let length = 0
+    for (let index = s.length - 1; index >= 0; index--) {
+        if (s[index] !== ' ') {
+            length++
+        } else if (length > 0) {
+            break;
+        }
     }
-
-    return lastWord.length;
+    return length;
 };
 
 module.exports = { lengthOfLastWord }
