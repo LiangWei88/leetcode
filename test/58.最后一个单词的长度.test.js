@@ -14,5 +14,6 @@ describe('58.最后一个单词的长度', () => {
     assert.strictEqual(lengthOfLastWord("a "), 1)
     assert.strictEqual(lengthOfLastWord(" "), 0)
     assert.strictEqual(lengthOfLastWord(""), 0)
+    assert.strictEqual(lengthOfLastWord("b   a    "), 1)
   })
 })

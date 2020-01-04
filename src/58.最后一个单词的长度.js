@@ -33,15 +33,8 @@
  * @return {number}
  */
 var lengthOfLastWord = function (s) {
-    let length = 0
-    for (let index = s.length - 1; index >= 0; index--) {
-        if (s[index] !== ' ') {
-            length++
-        } else if (length > 0) {
-            break;
-        }
-    }
-    return length;
+    const lastWorld = s.match(/(\w+) *$/);
+    return lastWorld ? lastWorld[1].length : 0;
 };
 
 module.exports = { lengthOfLastWord }
